@@ -1,7 +1,7 @@
 extends Node2D
 
 var level := 0
-var lastLevel := 21
+var lastLevel := 3
 var Game
 
 var OST = load("res://Audio/OST.ogg")

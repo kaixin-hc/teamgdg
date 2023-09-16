@@ -11,6 +11,7 @@ var SceneExplo = load("res://Scene/Explosion.tscn")
 @onready var NodeAudioWin := $Audio/Win
 @onready var NodeAudioLose := $Audio/Lose
 @onready var NodeSprite := $Sprite2D
+@onready var LevelCompletionScreen := $LevelComplete
 
 var clock := 0.0
 var delay := 1.5
@@ -21,6 +22,7 @@ func _ready():
 	global.Game = self
 	
 	if global.level == 0 or global.level == 21:
+# Chane this to be the correct opening screen
 		NodeSprite.frame = 0 if global.level == 0 else 3
 		NodeSprite.visible = true
 		var p = ScenePlayer.instantiate()
@@ -43,11 +45,13 @@ func _process(delta):
 
 func MapLoad():
 	var nxtlvl = min(global.level, global.lastLevel)
-	var tm = load(tmpath + str("level3new.tscn")).instantiate()
+	
+	if global.level != 0:
+		var tm = load(tmpath + str("level")+ str(nxtlvl) + str("new.tscn")).instantiate()
 #	var tm = load(tmpath + str(nxtlvl) + ".tscn").instantiate()
-	tm.name = "TileMap"
-	add_child(tm)
-	NodeTileMap = tm
+		tm.name = "TileMap"
+		add_child(tm)
+		NodeTileMap = tm
 
 func MapStart():
 	print("--- MapStart: Begin ---")
@@ -112,7 +116,8 @@ func Lose():
 func Win():
 	change = true
 	NodeAudioWin.play()
-	NodeSprite.visible = true
+	NodeTileMap.visible = false
+	LevelCompletionScreen.visible = true
 	global.level = min(global.lastLevel, global.level + 1)
 	print("Level Complete!, change to level: ", global.level)
 
