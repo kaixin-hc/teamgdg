@@ -44,7 +44,7 @@ func _process(delta):
 
 func MapLoad():
 	var nxtlvl = min(global.level, global.lastLevel)
-	var tm = load(tmpath + str("level1new.tscn")).instantiate()
+	var tm = load(tmpath + str("level3new.tscn")).instantiate()
 #	var tm = load(tmpath + str(nxtlvl) + ".tscn").instantiate()
 	tm.name = "TileMap"
 	add_child(tm)
