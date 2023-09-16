@@ -1,17 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://754fkiumejg7"]
 
-[ext_resource type="Texture2D" uid="uid://d38ecigjmaqp8" path="res://bigG.png" id="1_civna"]
 [ext_resource type="TileSet" uid="uid://b2eehst0nvoyj" path="res://addons/kenney pixel platformer/tile sets/terrain_tile_set.tres" id="2_dijcx"]
 [ext_resource type="Texture2D" uid="uid://dj50he0tdek24" path="res://trueassets/Decor/anotherhydrant.png" id="3_l8q8w"]
 [ext_resource type="PackedScene" uid="uid://bkv3s2bwy7ouj" path="res://Scene/Bone.tscn" id="3_s53iy"]
+[ext_resource type="Texture2D" uid="uid://b7s7h4voj6hff" path="res://trueassets/UI/BACKGROUND.png" id="4_xfcwh"]
 
 [node name="level2" type="Node2D"]
 position = Vector2(-300, -210)
-
-[node name="BigG" type="Sprite2D" parent="."]
-z_index = -99
-position = Vector2(261, 259)
-texture = ExtResource("1_civna")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(100, -42)
@@ -26,3 +21,9 @@ position = Vector2(549, 438)
 [node name="Anotherhydrant" type="Sprite2D" parent="."]
 position = Vector2(611, 303)
 texture = ExtResource("3_l8q8w")
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = 1000
+position = Vector2(359, 281)
+texture = ExtResource("4_xfcwh")

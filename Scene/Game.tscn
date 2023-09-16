@@ -55,6 +55,8 @@ z_index = 100
 position = Vector2(71, 74)
 texture = ExtResource("4_7f87l")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="OpeningScreen" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(72, 73)
 sprite_frames = SubResource("SpriteFrames_menxb")
-frame_progress = 0.620716
+frame_progress = 0.625172

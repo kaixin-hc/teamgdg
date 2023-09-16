@@ -12,6 +12,7 @@ var SceneExplo = load("res://Scene/Explosion.tscn")
 @onready var NodeAudioLose := $Audio/Lose
 @onready var NodeSprite := $Sprite2D
 @onready var LevelCompletionScreen := $LevelComplete
+@onready var OpeningScreen := $OpeningScreen
 
 var clock := 0.0
 var delay := 1.5
@@ -23,8 +24,9 @@ func _ready():
 	
 	if global.level == 0 or global.level == 21:
 # Chane this to be the correct opening screen
-		NodeSprite.frame = 0 if global.level == 0 else 3
-		NodeSprite.visible = true
+#		NodeSprite.frame = 0 if global.level == 0 else 3
+#		NodeSprite.visible = true
+		OpeningScreen.visible = true
 		var p = ScenePlayer.instantiate()
 		p.position = Vector2(72, 85)
 		p.scale.x = -1 if randf() < 0.5 else 1
