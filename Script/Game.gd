@@ -56,7 +56,13 @@ func MapLoad():
 func MapStart():
 	print("--- MapStart: Begin ---")
 	var inst = ScenePlayer.instantiate()
-	inst.position = Vector2(310, -120)
+	if global.level == 1:
+		inst.position = Vector2(250, -500)
+	elif global.level == 2:
+		inst.position = Vector2(-190, -450)
+	elif global.level == 3:
+		inst.position = Vector2(300, -50)
+	
 	self.add_child(inst)
 	
 	# Hard code locations of bones??? :sobs:
