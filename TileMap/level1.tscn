@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://23n3gcgf05h"]
 
-[ext_resource type="Texture2D" uid="uid://cym0neebld8cb" path="res://bigG.png" id="1_thska"]
+[ext_resource type="Texture2D" uid="uid://dnhdykuemfguh" path="res://bigG.png" id="1_thska"]
 [ext_resource type="TileSet" uid="uid://b2eehst0nvoyj" path="res://addons/kenney pixel platformer/tile sets/terrain_tile_set.tres" id="2_jw3mq"]
 
 [node name="level1" type="Node2D"]

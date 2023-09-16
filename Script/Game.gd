@@ -24,7 +24,7 @@ var change := false
 
 func new_game():
 	$startTimer.start()
-	$HUD.show_message("Start Your Adventure")
+	$HUD.show_message("Start Your \nAdventure")
 
 
 func _ready():
@@ -44,15 +44,19 @@ func _ready():
 	MapStart()
 
 func _process(delta):
+	
 	clock += delta
 	# title and finish
 	if btn.p("jump") and (global.level == 0 or (global.level == 21  and clock > 0.5)):
 		global.level = posmod(global.level + 1, 22)
 		DoChange()
+		
 	
 	MapChange(delta)
+	
 
 func MapLoad():
+	if (!NodeSprite.visible): new_game()
 	var nxtlvl = min(global.level, global.lastLevel)
 	var tm = load(tmpath + str("1.tscn")).instantiate()
 #	var tm = load(tmpath + str(nxtlvl) + ".tscn").instantiate()
@@ -61,7 +65,7 @@ func MapLoad():
 	NodeTileMap = tm
 
 func MapStart():
-	new_game()
+	
 	print("--- MapStart: Begin ---")
 	var inst = ScenePlayer.instantiate()
 	inst.position = Vector2(0, 1)
