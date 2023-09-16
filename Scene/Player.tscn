@@ -174,4 +174,4 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_61jw0")
 animation = &"Jump"
-frame_progress = 0.523222
+frame_progress = 0.888609
