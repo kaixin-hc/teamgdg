@@ -24,6 +24,5 @@ texture = ExtResource("3_l8q8w")
 
 [node name="Background" type="Sprite2D" parent="."]
 show_behind_parent = true
-z_index = 1000
-position = Vector2(359, 281)
+position = Vector2(370, 288)
 texture = ExtResource("4_xfcwh")

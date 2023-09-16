@@ -49,6 +49,7 @@ func MapLoad():
 	var nxtlvl = min(global.level, global.lastLevel)
 	
 	if global.level != 0:
+#		var tm = load(tmpath + str("level2new.tscn")).instantiate()
 		var tm = load(tmpath + str("level")+ str(nxtlvl) + str("new.tscn")).instantiate()
 #	var tm = load(tmpath + str(nxtlvl) + ".tscn").instantiate()
 		tm.name = "TileMap"

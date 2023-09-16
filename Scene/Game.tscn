@@ -59,4 +59,4 @@ texture = ExtResource("4_7f87l")
 visible = false
 position = Vector2(72, 73)
 sprite_frames = SubResource("SpriteFrames_menxb")
-frame_progress = 0.625172
+frame_progress = 0.350602
