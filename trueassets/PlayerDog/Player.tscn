@@ -1,0 +1,188 @@
+[gd_scene load_steps=22 format=3 uid="uid://ygiqkxwapyvf"]
+
+[ext_resource type="Script" path="res://Script/Player.gd" id="1_soyoo"]
+[ext_resource type="Texture2D" uid="uid://cboj002ecda55" path="res://Image/Player.png" id="2_aklpl"]
+[ext_resource type="Texture2D" uid="uid://d002pq4mqy661" path="res://trueassets/PlayerDog/dog_walk1.png" id="3_lug8h"]
+[ext_resource type="Texture2D" uid="uid://buewlxrh5as8s" path="res://trueassets/PlayerDog/dog_jump1.png" id="4_dm2qy"]
+[ext_resource type="Texture2D" uid="uid://ciwatw2vk4f2q" path="res://trueassets/PlayerDog/dog_jump2.png" id="5_l6yb5"]
+[ext_resource type="Texture2D" uid="uid://dfduyvgc26n67" path="res://trueassets/PlayerDog/dog_jump3.png" id="6_fhm3v"]
+[ext_resource type="Texture2D" uid="uid://pmrhdxkemegn" path="res://trueassets/PlayerDog/dog_jump4.png" id="7_j05ch"]
+[ext_resource type="Texture2D" uid="uid://bagq6vksye2p6" path="res://trueassets/PlayerDog/dog_jump5.png" id="8_6gqe8"]
+[ext_resource type="Texture2D" uid="uid://lilwxwb7aulr" path="res://trueassets/PlayerDog/dog_jump6.png" id="9_pknvh"]
+[ext_resource type="Texture2D" uid="uid://bgrte8lbmx6sl" path="res://trueassets/PlayerDog/dog_jump7.png" id="10_xad3w"]
+[ext_resource type="Texture2D" uid="uid://cveagbavtj61t" path="res://trueassets/PlayerDog/dog_walk2.png" id="11_aqp0a"]
+[ext_resource type="Texture2D" uid="uid://caksqrf3lf77d" path="res://trueassets/PlayerDog/dog_walk3.png" id="12_7jhfk"]
+[ext_resource type="Texture2D" uid="uid://bg3nt5pgn4xd4" path="res://trueassets/PlayerDog/dog_walk4.png" id="13_88o74"]
+[ext_resource type="Texture2D" uid="uid://poee35oanlmw" path="res://trueassets/PlayerDog/dog_walk5.png" id="14_4amym"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(52, 48)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_caomc"]
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Run"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "Jump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="5"]
+resource_name = "Run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xy4w5"]
+_data = {
+"Idle": SubResource("3"),
+"Jump": SubResource("4"),
+"Run": SubResource("5")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61jw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lug8h")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dm2qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l6yb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fhm3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j05ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6gqe8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pknvh")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xad3w")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lug8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_aqp0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7jhfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_88o74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4amym")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 9.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 10
+collision_layer = 2
+script = ExtResource("1_soyoo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("2_aklpl")
+hframes = 7
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 8)
+shape = SubResource("1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8.5, -0.5)
+shape = SubResource("ConvexPolygonShape2D_caomc")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_xy4w5")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_61jw0")
+animation = &"Idle"
