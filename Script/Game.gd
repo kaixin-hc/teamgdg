@@ -18,8 +18,18 @@ var delay := 1.5
 var check := false
 var change := false
 
+
+# Called when the node enters the scene tree for the first time.
+
+
+func new_game():
+	$startTimer.start()
+	$HUD.show_message("Start Your Adventure")
+
+
 func _ready():
 	global.Game = self
+	
 	
 	if global.level == 0 or global.level == 21:
 		NodeSprite.frame = 0 if global.level == 0 else 3
@@ -44,13 +54,14 @@ func _process(delta):
 
 func MapLoad():
 	var nxtlvl = min(global.level, global.lastLevel)
-	var tm = load(tmpath + str("level1.tscn")).instantiate()
+	var tm = load(tmpath + str("1.tscn")).instantiate()
 #	var tm = load(tmpath + str(nxtlvl) + ".tscn").instantiate()
 	tm.name = "TileMap"
 	add_child(tm)
 	NodeTileMap = tm
 
 func MapStart():
+	new_game()
 	print("--- MapStart: Begin ---")
 	var inst = ScenePlayer.instantiate()
 	inst.position = Vector2(0, 1)
@@ -121,3 +132,27 @@ func Explode(arg : Vector2):
 	var xpl = SceneExplo.instantiate()
 	xpl.position = arg
 	add_child(xpl)
+
+
+func _on_start_timer_timeout():
+	$effectiveTimer.start()
+	$incrementTimer.start()
+	$HUD/TimerLabel.show()
+
+
+func _on_increment_timer_timeout():
+	
+	var timeLeft = $effectiveTimer.get_time_left()
+	var minutes = int(timeLeft / 60)
+	var seconds = int(timeLeft) % 60
+
+	var timeLeftFormatted = "0" + str(minutes) + ":" + str(seconds)
+	if seconds < 10 : timeLeftFormatted = "0" + str(minutes) + ":" + "0" + str(seconds)
+	
+	$HUD.update_timeLeftFormatted(timeLeftFormatted)
+
+
+func _on_effective_timer_timeout():
+	$incrementTimer.stop()
+	$HUD.show_message("Oops! Time to Go Home")
+	$HUD/TimerLabel.hide()
