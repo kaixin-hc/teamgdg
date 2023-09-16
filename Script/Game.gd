@@ -8,7 +8,6 @@ var ScenePlayer = load("res://Scene/Player.tscn")
 var SceneGoober = load("res://Scene/Goober.tscn")
 var SceneExplo = load("res://Scene/Explosion.tscn")
 
-@onready var NodeGoobers := $Goobers
 @onready var NodeAudioWin := $Audio/Win
 @onready var NodeAudioLose := $Audio/Lose
 @onready var NodeSprite := $Sprite2D
@@ -55,6 +54,10 @@ func MapStart():
 	var inst = ScenePlayer.instantiate()
 	inst.position = Vector2(0, 1)
 	self.add_child(inst)
+	
+	# Hard code locations of bones :sobs:
+	
+	
 #	for pos in NodeTileMap.get_used_cells(0):
 #		var id = NodeTileMap.get_cell_source_id(0, pos)
 #		print("printing per cell")
@@ -94,10 +97,10 @@ func MapChange(delta):
 	# should i check?
 	if check:
 		check = false
-		var count = NodeGoobers.get_child_count()
-		print("Goobers: ", count)
-		if count == 0:
-			Win()
+#		var count = NodeBones.get_child_count()
+#		print("Bones: ", count)
+#		if count == 0:
+		Win()
 
 func Lose():
 	change = true

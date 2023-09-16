@@ -8,7 +8,7 @@ extends CharacterBody2D
 var vel := Vector2.ZERO
 var spd := 60.0
 var grv := 255.0
-var jumpSpd := 230.0
+var jumpSpd := 233.0
 var termVel := 400.0
 
 var onFloor := false
@@ -85,6 +85,22 @@ func Overlap():
 				NodeScene.Explode(par.position)
 				NodeScene.check = true
 				print("Goober destroyed")
+		if par is Bone:
+			var above = position.y - 1 < par.position.y
+			NodeScene.Explode(par.position)
+			NodeScene.check = true
+			print("Bone Acquired")
+#			if onFloor or (vel.y < 0.0 and !above):
+#				Die()
+#			else:
+#				hit = true
+#				jump = btn.d("jump")
+#				vel.y = -jumpSpd * (1.0 if jump else 0.6)
+#
+#				par.queue_free()
+#				NodeScene.Explode(par.position)
+#				NodeScene.check = true
+#				print("Goober destroyed")
 	return hit
 
 func TryLoop(arg : String):

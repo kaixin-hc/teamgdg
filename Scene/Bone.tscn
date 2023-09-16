@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkv3s2bwy7ouj"]
+
+[ext_resource type="Script" path="res://Script/Bone.gd" id="1_1lg2p"]
+[ext_resource type="Texture2D" uid="uid://cs66ae4mt0daw" path="res://trueassets/bone1.png" id="2_f7n2u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vs13"]
+size = Vector2(13, 2)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(21, 6)
+
+[node name="Bone" type="StaticBody2D"]
+z_index = 9
+position = Vector2(-1, -12)
+collision_layer = 8
+script = ExtResource("1_1lg2p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 16)
+shape = SubResource("RectangleShape2D_3vs13")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 16)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("2")
+
+[node name="Bone" type="Sprite2D" parent="."]
+position = Vector2(-1, -11)
+texture = ExtResource("2_f7n2u")
