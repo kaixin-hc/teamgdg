@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
 @onready var NodeScene = global.Game
-@onready var NodeSprite := $Sprite2D
+@onready var NodeAnimatedSprite = $AnimatedSprite2D
 @onready var NodeArea2D := $Area2D
 @onready var NodeAudio := $Audio
-@onready var NodeAnim := $AnimationPlayer
 
 var vel := Vector2.ZERO
 var spd := 60.0
@@ -49,14 +48,14 @@ func _physics_process(delta):
 	
 	# sprite flip
 	if btnx != 0:
-		NodeSprite.flip_h = btnx < 0
+		NodeAnimatedSprite.flip_h = btnx > 0
 	
 	# animation
 	if onFloor:
 		if btnx == 0:
 			TryLoop("Idle")
 		else:
-			TryLoop("Run")
+			TryLoop("Walk")
 	else:
 		TryLoop("Jump")
 
@@ -89,8 +88,8 @@ func Overlap():
 	return hit
 
 func TryLoop(arg : String):
-	if arg == NodeAnim.current_animation:
+	if arg == NodeAnimatedSprite.animation:
 		return false
 	else:
-		NodeAnim.play(arg)
+		NodeAnimatedSprite.play(arg)
 		return true
