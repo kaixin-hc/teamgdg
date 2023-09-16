@@ -55,7 +55,7 @@ func MapStart():
 	inst.position = Vector2(0, 1)
 	self.add_child(inst)
 	
-	# Hard code locations of bones :sobs:
+	# Hard code locations of bones??? :sobs:
 	
 	
 #	for pos in NodeTileMap.get_used_cells(0):
