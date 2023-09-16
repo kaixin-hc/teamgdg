@@ -8,7 +8,7 @@ extends CharacterBody2D
 var vel := Vector2.ZERO
 var spd := 60.0
 var grv := 255.0
-var jumpSpd := 133.0
+var jumpSpd := 230.0
 var termVel := 400.0
 
 var onFloor := false
