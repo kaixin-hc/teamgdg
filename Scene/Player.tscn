@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b17jmr687k1sm"]
+[gd_scene load_steps=9 format=3 uid="uid://b17jmr687k1sm"]
 
 [ext_resource type="Script" path="res://Script/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cboj002ecda55" path="res://Image/Player.png" id="2"]
-[ext_resource type="AudioStream" uid="uid://demm2lx0twrlj" path="res://Audio/Jump.ogg" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(3, 6)
@@ -90,7 +89,6 @@ collision_mask = 5
 shape = SubResource("2")
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"

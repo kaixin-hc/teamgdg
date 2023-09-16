@@ -23,4 +23,4 @@ func _input(event):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if win_full else DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func wrapp(pos := Vector2.ZERO):
-	return Vector2(wrapf(pos.x, 0.0, 144.0), wrapf(pos.y, 0.0, 144.0))
+	return Vector2(wrapf(pos.x, -250, 390.0), wrapf(pos.y, -250, 390.0))

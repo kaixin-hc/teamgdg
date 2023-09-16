@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Candy Wrapper"
-config/description="by Harmony Honey"
+config/description="by team gdg!"
 run/main_scene="res://Scene/Game.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://Image/picon.svg"
@@ -23,8 +23,8 @@ global="*res://Script/Global.gd"
 
 [display]
 
-window/size/viewport_width=144
-window/size/viewport_height=144
+window/size/viewport_width=640
+window/size/viewport_height=640
 window/size/window_width_override=576
 window/size/window_height_override=576
 window/stretch/mode="canvas_items"
