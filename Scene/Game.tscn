@@ -30,6 +30,7 @@ script = ExtResource("1")
 offset = Vector2(72, 72)
 
 [node name="CandySpawner" type="Node2D" parent="."]
+top_level = true
 script = ExtResource("2")
 
 [node name="Goobers" type="Node2D" parent="."]
@@ -59,4 +60,4 @@ texture = ExtResource("4_7f87l")
 visible = false
 position = Vector2(72, 73)
 sprite_frames = SubResource("SpriteFrames_menxb")
-frame_progress = 0.350602
+frame_progress = 0.122365

@@ -5,8 +5,9 @@ enum {TILE_WALL = 0, TILE_PLAYER = 1, TILE_GOOBER = 2}
 var NodeTileMap
 
 var ScenePlayer = load("res://Scene/Player.tscn")
-var SceneGoober = load("res://Scene/Goober.tscn")
-var SceneExplo = load("res://Scene/Explosion.tscn")
+# Didn't implement this part, also note audio is missing
+#var SceneGoober = load("res://Scene/Goober.tscn")
+#var SceneExplo = load("res://Scene/Explosion.tscn")
 
 @onready var NodeAudioWin := $Audio/Win
 @onready var NodeAudioLose := $Audio/Lose
@@ -22,16 +23,8 @@ var change := false
 func _ready():
 	global.Game = self
 	
-	if global.level == 0 or global.level == 21:
-# Chane this to be the correct opening screen
-#		NodeSprite.frame = 0 if global.level == 0 else 3
-#		NodeSprite.visible = true
+	if global.level == 0:
 		OpeningScreen.visible = true
-		var p = ScenePlayer.instantiate()
-		p.position = Vector2(72, 85)
-		p.scale.x = -1 if randf() < 0.5 else 1
-		p.set_script(null)
-		add_child(p)
 	
 	MapLoad()
 	MapStart()
@@ -49,7 +42,6 @@ func MapLoad():
 	var nxtlvl = min(global.level, global.lastLevel)
 	
 	if global.level != 0:
-#		var tm = load(tmpath + str("level2new.tscn")).instantiate()
 		var tm = load(tmpath + str("level")+ str(nxtlvl) + str("new.tscn")).instantiate()
 #	var tm = load(tmpath + str(nxtlvl) + ".tscn").instantiate()
 		tm.name = "TileMap"
@@ -59,44 +51,16 @@ func MapLoad():
 func MapStart():
 	print("--- MapStart: Begin ---")
 	var inst = ScenePlayer.instantiate()
+
 	if global.level == 1:
 		inst.position = Vector2(250, -500)
 	elif global.level == 2:
 		inst.position = Vector2(-190, -450)
 	elif global.level == 3:
-		inst.position = Vector2(300, -50)
+		inst.position = Vector2(300, -40)
 	
 	self.add_child(inst)
-	
-	# Hard code locations of bones??? :sobs:
-	
-	
-#	for pos in NodeTileMap.get_used_cells(0):
-#		var id = NodeTileMap.get_cell_source_id(0, pos)
-#		print("printing per cell")
-#		if id == TILE_PLAYER:
-#			var p = id == TILE_PLAYER
-#			print(pos, ": Player" if p else ": Goober")
-#			var inst = ScenePlayer.instantiate()
-#			inst.position = Vector2(0, 1)
-#			self.add_child(inst)
-#	# 		# remove tile from map
-#			NodeTileMap.set_cell(0, pos, -1)
-#	print("global.level: ", global.level)
-#	for pos in NodeTileMap.get_used_cells(0):
-#		var id = NodeTileMap.get_cell_source_id(0, pos)
-#		if id == TILE_WALL:
-#			print(pos, ": Wall")
-#			var atlas = Vector2(randi_range(0, 2), randi_range(0, 2))
-#			NodeTileMap.set_cell(0, pos, TILE_WALL, atlas)
-#		elif id == TILE_PLAYER or id == TILE_GOOBER:
-#			var p = id == TILE_PLAYER
-#			print(pos, ": Player" if p else ": Goober")
-#			var inst = (ScenePlayer if p else SceneGoober).instantiate()
-#			inst.position = NodeTileMap.map_to_local(pos) + Vector2(4, 0 if p else 1)
-#			(self if p else NodeGoobers).add_child(inst)
-#			# remove tile from map
-#			NodeTileMap.set_cell(0, pos, -1)
+
 	print("--- MapStart: End ---")
 
 func MapChange(delta):
@@ -134,7 +98,7 @@ func DoChange():
 	change = false
 	get_tree().reload_current_scene()
 
-func Explode(arg : Vector2):
-	var xpl = SceneExplo.instantiate()
-	xpl.position = arg
-	add_child(xpl)
+#func Explode(arg : Vector2):
+#	var xpl = SceneExplo.instantiate()
+#	xpl.position = arg
+#	add_child(xpl)

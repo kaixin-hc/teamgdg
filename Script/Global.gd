@@ -4,6 +4,7 @@ var level := 0
 var lastLevel := 3
 var Game
 
+# OST is missing
 var OST = load("res://Audio/OST.ogg")
 var audio
 

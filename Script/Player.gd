@@ -86,8 +86,8 @@ func Overlap():
 				NodeScene.check = true
 				print("Goober destroyed")
 		if par is Bone:
-			var above = position.y - 1 < par.position.y
-			NodeScene.Explode(par.position)
+#			var above = position.y - 1 < par.position.y
+#			NodeScene.Explode(par.position)
 			NodeScene.check = true
 			print("Bone Acquired")
 #			if onFloor or (vel.y < 0.0 and !above):

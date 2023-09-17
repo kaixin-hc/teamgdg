@@ -3,7 +3,7 @@ extends Node2D
 var delay := 3.0
 var timer := 0.0
 
-var candy_tex = preload("res://Image/Candy.png")
+var bone_tex = preload("res://trueassets/bone1.png")
 
 var active := []
 var idle := []
@@ -34,7 +34,7 @@ func _process(delta):
 				c = idle.pop_back()
 			else:
 				c = Sprite2D.new()
-				c.texture = candy_tex
+				c.texture = bone_tex
 				c.z_index = -1
 				add_child(c)
 			active.append(c)
